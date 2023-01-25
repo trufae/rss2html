@@ -1,0 +1,71 @@
+.Dd January 16, 2006
+.Dt RSS2HTML 1
+.Os
+.Sh NAME
+.Nm rss2html
+.Nd rss and podcast parser and html/other formats generator
+.Sh SYNOPSIS
+.Nm rss2html
+.Op Fl c Ar file
+.Op Fl d
+.Op Fl D Ar description
+.Op Fl e Ar word,word,...
+.Op Fl h
+.Op Fl i
+.Op Fl j
+.Op Fl k
+.Op Fl l Ar language
+.Op Fl L Ar basedir
+.Op Fl n Ar n_posts
+.Op Fl N Ar n_total
+.Op Fl o Ar format
+.Op Fl p Ar picture
+.Op Fl P Ar name@url
+.Op Fl r Ar n_words
+.Op Fl t Ar tmpdir
+.Op Fl T Ar template
+.Pp
+.Sh OPTIONS
+The following flags are available:
+.Bl -tag -width Fl
+.It Fl c Ar file
+Read the configuration file from this file.
+.It Fl d
+Appends the body of the post after the title.
+.It Fl D Ar description
+Sets the description string for the output format.
+.It Fl e Ar word,word,...
+Greps posts matching one of the comma-separated words.
+.It Fl h
+Shows the help string.
+.It Fl i
+Do not show images.
+.It Fl j
+Join bodies of posts.
+.It Fl k
+Do not remove temporally files (Keep them).
+.It Fl T Ar template
+Use this file as a default template to generate the html output.
+.It Fl n Ar n_posts
+Sets the maximum number of posts for each feed to be showed.
+.It Fl N Ar n_total
+Sets the maximum number of posts to be showed for the final output.
+.It Fl r Ar n_words
+Strip text content in n_words.
+.It Fl l Ar language
+Sets the desired language for the output file.
+.It Fl L Ar basedir
+Sets the basedir to translate all links.
+.It Fl o Ar format
+Choose the output format. Valid values: txt, html, tml, tab, rss, mxml, xml2doc, url.
+.It Fl p Ar picture
+Sets the desired picture url.
+.It Fl P Ar name@url
+Puts rss2html in 'planet' mode. It will order all posts by date and setup a global name and url for the planet headers.
+.It Fl t Ar tempdir
+Sets the temporally directory to place downloaded RSSs.
+.Op Fl T Ar template
+Sets an HTML template to beutify the output. 
+.El
+.Sh AUTHORS
+.An pancake Aq pancake@phreaker.net

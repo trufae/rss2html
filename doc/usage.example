@@ -1,0 +1,36 @@
+====================================
+Usage example tutorial for rss2html:
+====================================
+
+
+You can directly view an rss by typing this single line:
+
+$ rss2html (rss-url) | lynx -stdin
+
+
+rss2html can be also used to retrieve audio files from a podcast's RSS:
+
+$ rss2html (rss-url) | wget -c -F -i -
+
+
+to listen't in realtime:
+
+$ rss2html -o url | mplayer -playlist -
+
+
+To read the news in the terminal console:
+
+$ rss2html -o txt -d (rss-url) | par w78
+
+
+It's easy to create a news parser just using rss2html as backend, you
+can write a simple parser in awk, perl, C, scheme just splitting each
+row with tabs.
+
+$ rss2html -o tab (rss-url) | awk -F "`printf '\t'`" -e '{ print $1 }'
+
+
+You can create a planet in just one line of shellscript:
+
+$ rss2html -P myplanet@myurl -d -n 2 -r 130 \
+	foo@http://blog/of/foo.xml bar@http://blog/of/bar.xml

@@ -1,0 +1,27 @@
+ ___   ____ ___        _   _    _    _      _
+|   \ / __//  /  ___  | |_| | _| |_ | | __ | |
+| |> )\  \ \  \ |___| |  _  ||_   _||  '  || |
+|   <  \_ \ \_ \      | | | |  | |  | |V| || |__
+|_|\_|/___//___/      |_| |_|  |__\ |_| |_||____|
+
+=================================================
+
+blog: http://news.nopcode.org/pancake
+http: http://www.nopcode.org/
+mail: pancake@phreaker.net
+
+rss2html is a light conversor to see rss/rss2/rdf/xml files
+in other formats like HTML, or just regenerate an MXML (doblog)
+database format or another RSS from other RSSs.
+
+You also can use a configuration file to assign more than one URL.
+To embed XMLs in your webpages just add this line in the header:
+
+Type this tag into your html web to allow firefox to autodetect your RSS feed.
+
+<link rel="alternate" type="application/rss+xml" title="your title here"
+		href="url_to_xml_here" />
+
+>> Type 'rss2html -h' for more information.
+
+                                           - pancake@phreaker.net

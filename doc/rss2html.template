@@ -1,0 +1,77 @@
+<!-- (header) -->
+<html>
+<head>
+ <title>rss2html html template example</title>
+<style>
+td {
+	font-size:10;
+}
+</style>
+</head>
+<body bgcolor="black">
+<table width="100%">
+<tr>
+<td colspan="2" bgcolor="#d0d0d0">
+	<h2>nopcode's planet</h2>
+</td>
+</tr>
+<tr>
+<td width="100" style="background-color:#b0b0b0" valign="top">
++ <a href="http://www.nopcode.org/">www.nopcode.org</a><br />
++ <a href="http://news.nopcode.org/">news.nopcode.org</a><br />
+
+</td>
+<td bgcolor="#b0a0a0" valign="top">
+<!-- (/header) -->
+
+<!-- (title-pre) -->
+<table><tr>
+<td>
+<!-- (/title-pre) -->
+
+<!-- (title-post) -->
+</td>
+<!-- (/title-post) -->
+
+
+<!-- (entry-pre) -->
+&gt;&gt;
+<!-- (/entry-pre) -->
+
+<!-- (entry-title-pre) -->
+<h2>
+<!-- (/entry-title-pre) -->
+
+<!-- (entry-title-post) -->
+</h2>
+<!-- (/entry-title-post) -->
+
+<!-- (entry-body-pre) -->
+<div style="background-color:#e0e0e0">
+<!-- (/entry-body-pre) -->
+
+<!-- (entry-body-post) -->
+</div>
+<!-- (/entry-body-post) -->
+
+<!-- (entry-readmore-pre) -->
+<a href="
+<!-- (/entry-readmore-pre) -->
+
+<!-- (entry-readmore-post) -->
+">&gt;&gt; read more</a>
+<!-- (/entry-readmore-post) -->
+
+<!-- (entry-post) -->
+<hr />
+<!-- (/entry-post) -->
+--
+##POST_END##
+</hr>
+
+<!-- (footer) -->
+</td></tr>
+</table>
+</body>
+</html>
+<!-- (/footer) -->

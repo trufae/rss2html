@@ -1,0 +1,28 @@
+(( pkg-info ))
+PKGNAME rss2html
+CONTACT pancake ; pancake@phreaker.net
+VERSION 0.8.2
+
+(( checks ))
+LANG_C!
+CHKINC time.h
+CHKINC netinet/in.h
+
+(( debugging ))
+ARG_ENABLE DEBUG debug compiles rss2html with extra debugging. ;
+DEBUG_CFLAGS = "" ;
+IF DEBUG DEBUG_CFLAGS = -g ;
+
+ARG_WITHOUT HAVE_LIB_CURL curl Build rss2html without curl dependency ;
+
+IF HAVE_LIB_CURL {
+	CHKPRG CURL curl-config
+	IF HAVE_CURL {
+		CHKLIB curl
+	}
+}
+
+(( finalization ))
+SUBDIRS . src ;
+
+REPORT HAVE_LIB_CURL DEBUG PREFIX ;

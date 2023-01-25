@@ -1,0 +1,29 @@
+# variables from acr
+VPATH=@VPATH@
+VERSION=@VERSION@
+CFLAGS=@CFLAGS@
+DEBUG=@DEBUG@
+DEBUG_CFLAGS=@DEBUG_CFLAGS@
+CC=@CC@
+CURL=@CURL@
+
+# compiler definitions
+CFLAGS+=-DVERSION=\"${VERSION}\" ${DEBUG_CFLAGS}
+CFLAGS+=-DDEBUG=${DEBUG} -DHAVE_LIB_CURL=@HAVE_LIB_CURL@
+
+##HAVE_LIB_CURL##
+CFLAGS+=`${CURL} --cflags`
+LDFLAGS+=`${CURL} --libs`
+##HAVE_LIB_CURL##
+
+# makefile variables
+BIN=rss2html
+OBJ=main.o rsslist.o config.o rssshow.o download.o storage.o \
+	parser.o output.o resume.o cmptime.o subst.o template.o
+
+.PHONY: all clean
+all: ${OBJ}
+	$(CC) ${LDFLAGS} ${OBJ} -o ${BIN}
+
+clean:
+	rm -f ${BIN} ${OBJ}

@@ -1,0 +1,80 @@
+0.8.2 * 2006/12/09
+	- add --without-curl configure's flag
+	- fix some -Wall tips
+	- add libcurl support (fixes chunked transfers and adds ssl support)
+
+0.8 * 2006/02/14
+	- add -n -N and -r (limit number of posts and words per post)
+	- support foreach url name format: name@url
+	- add link_node number id foreach link (html + xml2doc)
+	- add support for RDF like dates.
+	- reclean the plain text output format
+	- use \r\n instead of just \n. (support for silly http servers).
+	- fix HTML output when no pubDate defined.
+	- fix support for RDF files.
+	- cleanup the txt output format.
+	- add substitution pattern and htmlize_string.
+	- use <author> foreach item.
+	- fix rss generation for planets. Change -P flag.
+	- minor fix rss2 generation.
+	- add author stuff for the templates
+	- fixes for the cdata strings
+	- add nopcode template
+	- add crontab planet script
+	- Add -P flag in cmdline
+	- Add support for planets (order posts by date).
+	- default html template reads rss2html.css
+	- add manpage.
+	- Initial support of templates
+	- initial enclosure url support (useful for podcast)
+	- add 'url' output format, for make pipes happy.
+	- fix parser.c again
+	- initial import of subst framework.
+	- add xml2doc output format
+	- initial use of the storage infrastructure.
+	- fix <![CDATA parser.
+	- finally remove the deprecated parser.
+	- fix pubDate output in MXML format.
+	- initial port to acr.
+	- add GPLv2 license and related stuff properly.
+	- initial import of cmptime.c
+	- rework on storage framework.
+	- fix html entities inside MXML output format.
+	- add doblog output information tip in README
+	- fix temporally file creation bug.
+	- handle description and content:encoded fields.
+	- add -n -N and -r (limit number of posts and words per post)
+	- support foreach url name format: name@url
+	- support for MXML format
+	- add some snippets for planet support in the future.
+	- implement the new XML parser.
+	- initial preparation for mxml format and date ordening. (not working yet)
+	- rename -d to -D and -x flag to -d
+	- add -L flag (local link translation)
+	- fix default prefix to /usr/local (stoned stuff)
+	- fix install stuff to use INSTALL_* stuff
+	- support for enclosure tag for podcasts
+	- podcast RSSs also working
+	- integrate Darek's patch that fix description field parsing (-x)
+	- order help flags
+
+0.7.2 * 2005/05/11
+	- Fix the "cannot open xxx file" bug.
+	- code cleanup and indentation
+
+0.7.1 * 2004/12/23
+	- Solve some segfaults
+	- Flush errors to stderr instead of stdout
+
+0.7 * 2004/11/27
+	- Add -e flag (grep like tool)
+	- Minor bugfixes
+	- Add support for description, language and picture as input
+	- Update dtd URL location
+	- Description support for output
+
+0.6 * 2004/02/19
+	- Logo support
+	- Only remove files if they'r fetched.
+	- Patch [CDATA tags
+	- Add rss output

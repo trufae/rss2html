@@ -1,0 +1,13 @@
+- -w do not die on errors
+- handle relative path images/links
+-- autocomplete relative links using the blog-base.
+- fetch images.
+- add SSL support
+- add index with -I ??
+- move all outputs to one file and make switches there.
+- -D description set mode must work on ALL formats
+- support for filters like <=date
+- UTF8 support
+- clean default html output
+- add -H to drop HTML tags, default for TXT output.
+- take care with html tags when "resuming"

@@ -1,0 +1,108 @@
+<!-- (header) -->
+<html>
+<head>
+ <title>planet nopcode</title>
+<style>
+td {
+	font-size:12;
+	font-family: verdana;
+	color: #D0D0D0;
+}
+img {
+	border:0;
+}
+a:hover   { color:#f0f0f0; }
+a:visited { color:#c0c0c0; text-decoration:none; }
+a:link    { color:#c0c0c0; text-decoration:none; }
+a:active  { color:#f0f0f0; text-decoration:none; }
+</style>
+<link rel="alternate" type="application/rss+xml" title="RSS v2.0" href="rss2.xml">
+</head>
+<body bgcolor=#000000>
+<table width="100%" bgcolor="gray" cellpadding="3">
+<tr>
+<td colspan="2" bgcolor="#000000" style="color:gray" border="0" >
+<tt><h1>&nbsp;&nbsp;planet nopcode</h1></tt>
+</td>
+</tr>
+<tr>
+<td width=15% style="background-color:#000000" valign="top">
+<tt>
+<br />
+<strong>[NopCode]</strong><br/>
+&nbsp;<a href="http://www.nopcode.org/">www.nopcode</a><br />
+&nbsp;<a href="http://cvs.nopcode.org/">cvs.nopcode</a><br />
+&nbsp;<a href="http://news.nopcode.org/">news.nopcode</a><br />
+<br />
+<strong>[Blogs]</strong><br />
+&nbsp;<a href="http://mikiHQ.com/">miki</a><br />
+&nbsp;<a href="http://news.nopcode.org/pancake">pancake</a><br />
+&nbsp;<a href="http://blogs.nopcode.org/brainstorm">brainstorm</a><br />
+&nbsp;<a href="http://pof.eslack.org/blog/">pof</a><br />
+&nbsp;<a href="http://plue.uni.cc/">plue</a><br />
+&nbsp;<a href="http://esteve.tizos.net/">esteve</a><br />
+&nbsp;<a href="http://midgard.bounceme.net/wp//">tripledes</a><br />
+&nbsp;<a href="http://plog.xtrarom.org/">xtraeme</a><br />
+&nbsp;<a href="http://marc.noctambuls.net/">marc</a><br />
+<br />
+<b><a href="rss2.xml">[RSS]</a></b>
+</tt>
+</td>
+<td bgcolor="#000000" valign="top" width="80%" >
+<br />
+<!-- (/header) -->
+
+
+<!-- (entry-pre) -->
+<h3><tt>
+<!-- (/entry-pre) -->
+
+<!-- (entry-author-pre) -->
+<!-- (/entry-author-pre) -->
+
+<!-- (entry-author-post) -->
+&nbsp;@&nbsp;
+<!-- (/entry-author-post) -->
+
+<!-- (title-pre) -->
+<!-- (/title-pre) -->
+
+<!-- (title-post) -->
+<!-- (/title-post) -->
+
+<!-- (entry-title-pre) -->
+<!-- (/entry-title-pre) -->
+
+<!-- (entry-title-post) -->
+</tt></h3>
+<!-- (/entry-title-post) -->
+
+<!-- (entry-body-pre) -->
+<tt>
+<!-- (/entry-body-pre) -->
+
+<!-- (entry-body-post) -->
+</ul>
+</tt>
+
+<!-- (/entry-body-post) -->
+
+<!-- (entry-readmore-pre) -->
+<a href="
+<!-- (/entry-readmore-pre) -->
+
+<!-- (entry-readmore-post) -->
+"><strong>...</strong></a>
+<!-- (/entry-readmore-post) -->
+
+<!-- (entry-post) -->
+<!-- (/entry-post) -->
+
+
+<!-- (footer) -->
+</td></tr>
+</table>
+</body>
+</html>
+<!-- (/footer) -->
+
