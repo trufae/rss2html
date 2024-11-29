@@ -19,7 +19,7 @@ control_c() {
 }
 trap control_c 2
 DEBUG=0
-HAVE_LIB_CURL=1
+WANT_CURL=0
 split_host() {
 S="$"
 while : ; do
@@ -114,12 +114,12 @@ done
 : ${INSTALL_PROGRAM_STRIP:=${INSTALL} -m 755 -s}
 : ${INSTALL_MAN:=${INSTALL} -m 444}
 : ${INSTALL_LIB:=${INSTALL} -m 755 -c}
- PKGNAME='rss2html' ; CONTACT_MAIL="pancake@phreaker.net" ; CONTACT_NAME="pancake" ; CONTACT="pancake <pancake@phreaker.net>" ; VERSION='0.8.2' ; VERSION_MAJOR=0; VERSION_MINOR=8; VERSION_PATCH=2; VERSION_NUMBER=00802;
+ PKGNAME='rss2html' ; CONTACT_MAIL="pancake@phreaker.net" ; CONTACT_NAME="pancake" ; CONTACT="pancake <pancake@phreaker.net>" ; VERSION='0.8.4' ; VERSION_MAJOR=0; VERSION_MINOR=8; VERSION_PATCH=4; VERSION_NUMBER=00804;
 }
 
 show_usage() {
 cat <<EOF2
-'configure' configures rss2html-0.8.2 to adapt to many kinds of systems.
+'configure' configures rss2html-0.8.4 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -164,7 +164,7 @@ EOF2
 printf "
 Optional Features:
   --enable-debug         compiles rss2html with extra debugging.
-  --without-curl         Build rss2html without curl dependency
+  --with-curl            Build rss2html without curl dependency
 "
 printf "
 Some influential environment variables:
@@ -201,10 +201,10 @@ ocho() {
 
 show_version() {
 if [ "$QUIET" = 1 ]; then
-	echo "0.8.2"
+	echo "0.8.4"
 	exit 0
 fi
-echo "rss2html-0.8.2 configuration script done with acr v2.1.4.
+echo "rss2html-0.8.4 configuration script done with acr v2.1.4.
 The 'Free Software Foundation' message is only for autodetection.
 Originally written by pancake <nopcode.org>."
 exit 0
@@ -233,12 +233,12 @@ case $flag in
 	show_version ; ;;
 -r|--r|--report)
 echo "PKGNAME:     rss2html"
-echo "VERSION:     0.8.2"
+echo "VERSION:     0.8.4"
 echo "AUTHOR:      pancake"
 echo "EMAIL:       pancake@phreaker.net"
 echo "LANGS:       c"
 echo "OPTIONAL:    libcurl"
-echo "FLAGS:       --enable-debug --without-curl"
+echo "FLAGS:       --enable-debug --with-curl"
 	exit 0
 	;;
 --cache-file)
@@ -291,7 +291,7 @@ echo "FLAGS:       --enable-debug --without-curl"
 	MANDIR="$value"; ;;
 
 "--enable-debug") DEBUG="1"; ;;
-"--without-curl") HAVE_LIB_CURL="0"; ;;
+"--with-curl") WANT_CURL="1"; ;;
 *) if [ "$value" ]; then eval "`echo $flag2=$value`" ;
 else echo ; echo "WARNING: Unknown flag '$flag'." >&2 ; echo ; fi ;;
 esac
@@ -309,7 +309,7 @@ parse_options "$1"
 shift
 done
 
-ENVWORDS="MANDIR DESCRIPTION INFODIR LIBDIR INCLUDEDIR LOCALSTATEDIR ETCDIR SYSCONFDIR DATADIR DOCDIR LIBEXECDIR SBINDIR BINDIR EPREFIX PREFIX SPREFIX TARGET HOST BUILD INSTALL INSTALL_LIB INSTALL_MAN INSTALL_PROGRAM INSTALL_PROGRAM_STRIP INSTALL_DIR INSTALL_SCRIPT INSTALL_DATA HOST_OS HOST_CPU BUILD_OS BUILD_CPU TARGET_OS TARGET_CPU VERSION VERSION_MAJOR VERSION_MINOR VERSION_PATCH VERSION_NUMBER PKGCFG_LIBDIR PKGCFG_INCDIR PKGNAME VPATH CONTACT CONTACT_NAME CONTACT_MAIL CC CFLAGS CPPFLAGS LDFLAGS HAVE_LANG_C HAVE_TIME_H HAVE_NETINET_IN_H DEBUG DEBUG_CFLAGS HAVE_LIB_CURL HAVE_CURL CURL"
+ENVWORDS="MANDIR DESCRIPTION INFODIR LIBDIR INCLUDEDIR LOCALSTATEDIR ETCDIR SYSCONFDIR DATADIR DOCDIR LIBEXECDIR SBINDIR BINDIR EPREFIX PREFIX SPREFIX TARGET HOST BUILD INSTALL INSTALL_LIB INSTALL_MAN INSTALL_PROGRAM INSTALL_PROGRAM_STRIP INSTALL_DIR INSTALL_SCRIPT INSTALL_DATA HOST_OS HOST_CPU BUILD_OS BUILD_CPU TARGET_OS TARGET_CPU VERSION VERSION_MAJOR VERSION_MINOR VERSION_PATCH VERSION_NUMBER PKGCFG_LIBDIR PKGCFG_INCDIR PKGNAME VPATH CONTACT CONTACT_NAME CONTACT_MAIL CC CFLAGS CPPFLAGS LDFLAGS HAVE_LANG_C HAVE_TIME_H HAVE_NETINET_IN_H DEBUG DEBUG_CFLAGS WANT_CURL HAVE_CURL CURL HAVE_LIB_CURL"
 
 create_environ
 
@@ -368,7 +368,8 @@ check_include HAVE_NETINET_IN_H netinet/in.h 0
 
 DEBUG_CFLAGS=""
 if [ "$DEBUG" = "1" ]; then DEBUG_CFLAGS="" ; fi
-if [ "$HAVE_LIB_CURL" = "1" ]; then
+HAVE_CURL="0"
+if [ "$WANT_CURL" = "1" ]; then
 ochof "checking for curl-config... "
 if [ -x "${CURL}" ]; then
 	FIND=${CURL}
@@ -467,7 +468,7 @@ do_remove
 if [ "$QUIET" = 0 ]; then
 echo
 echo "Final report:"
-for A in  HAVE_LIB_CURL DEBUG PREFIX ; do
+for A in  HAVE_CURL DEBUG PREFIX ; do
 eval VAL="\$${A}"
 [ -z "${VAL}" ] && VAL="\"\""
 echo " - ${A} = ${VAL}"
