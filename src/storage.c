@@ -24,6 +24,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+static struct planet storage;
+
 void storage_init()
 {
 	storage.n_blogs = 0;

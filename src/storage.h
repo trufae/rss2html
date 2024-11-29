@@ -48,8 +48,6 @@ struct planet
 	struct blog *blogs;
 };
 
-struct planet storage;
-
 void storage_init();
 void storage_free();
 

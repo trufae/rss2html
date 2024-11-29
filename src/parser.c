@@ -78,7 +78,7 @@ bool is_rss(char *buf)
 	if (b == NULL)
 	b = strstr(buf,"<rss");
 
-	return (bool)b;
+	return b != NULL;
 }
 
 void get_enclosure_url(char *buf, char **buffer)
