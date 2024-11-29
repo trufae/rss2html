@@ -197,6 +197,7 @@ void storage_order_by_date()
 		char *category=storage_get(posts[i],"category");
 		char *pubDate=storage_get(posts[i],"pubDate");
 		char *content=storage_get(posts[i],"content");
+		char *media=storage_get(posts[i],"media");
 		/*
 		if (author == NULL)
 		{
@@ -208,7 +209,7 @@ void storage_order_by_date()
 		}
 		*/
 
-		output_post(title,author,link,category,pubDate,content);
+		output_post(title,author,link,category,pubDate,content, media);
 	}
 
 	free(posts);

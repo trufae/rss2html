@@ -40,6 +40,9 @@ void output_post(char *title, char *author, char *link, char *category, char *pu
 		if (cfg.planet)
 		printf(" | Author:   %s\n", author);
 		printf(" | URL:      %s%s\n",get_prefix_string(),link);
+		if (media) {
+			printf(" | Media: %s\n", media);
+		}
 		if (cfg.showdesc&&content)
 			printf("    %s\n\n",content);
 		break;
@@ -102,6 +105,9 @@ void output_post(char *title, char *author, char *link, char *category, char *pu
 				printf("%s",content);
 				printf("%s",tmpl_postpost_body);
 			}
+			if (media) {
+				printf("<img src=\"%s\" />\n", media);
+			}
 
 			if (is_resumed)
 			{
@@ -114,9 +120,11 @@ void output_post(char *title, char *author, char *link, char *category, char *pu
 			printf("<a name=\"node%d\" href=\"%s%s\">%s</a>",
 				link_node, get_prefix_string(), link, title);
 
-			if (pubDate)
-			{
+			if (pubDate) {
 				printf("(%s)",pubDate);
+			}
+			if (media) {
+				printf("<img src=\"%s\" />\n", media);
 			}
 			printf("<br />\n");
 

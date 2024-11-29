@@ -83,7 +83,7 @@ extern char *tmpl_preauthor;
 extern char *tmpl_postauthor;;
 
 extern bool is_resumed;
-void output_post(char *title, char *author, char *link, char *category, char *pubDate, char *content);
+void output_post(char *title, char *author, char *link, char *category, char *pubDate, char *content, char *media);
 void do_resume(char *);
 char *htmlize_string(char *);
 char *rdf_to_rfc2822(char *tstamp);

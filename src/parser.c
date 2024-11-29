@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2005, 2006
- *       pancake <pancake@phreaker.net>
+ * Copyright (C) 2005, 2006, 2024
+ *       pancake <pancake@nopcode.org>
  *
  * rss2html is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -109,14 +109,21 @@ void get_tag_info(char *buf, char *str, char *limit, char **buffer)
 	bool cdata = false;
 	char *tag;
 	char *ptr;
+	char *e2 = NULL;
 
 	*buffer = NULL;
 
 	tag = (char *)malloc(strlen(str)+4); // 4=<+/+>+0
-	sprintf(tag,"<%s>",str);
+	if (strchr (str, ':')) {
+		sprintf(tag,"<%s ",str);
+	} else {
+		sprintf(tag,"<%s>",str);
+	}
 	
 	b = strstr(buf,tag);
-	if (b == NULL) return; /* tag not found */
+	if (b == NULL) {
+		return; /* tag not found */
+	}
 	if (limit != 0)
 	if (b > limit) return; /* limit reached */
 
@@ -124,7 +131,13 @@ void get_tag_info(char *buf, char *str, char *limit, char **buffer)
 	if (! memcmp(b,"<![CDATA[",8) ) { b = b + 9; cdata=true;} // CDATA
 	sprintf(tag,"</%s>",str);
 	e = strstr(buf,tag);
-	if (e == NULL) return; /* end tag not found */
+	if (e == NULL) {
+		sprintf(tag,"/>");
+		e = strstr(buf,tag);
+		if (e == NULL) {
+			return; /* end tag not found */
+		}
+	}
 	e[0]='\0';
 	tmp = '<';
 
@@ -151,9 +164,22 @@ void get_tag_info(char *buf, char *str, char *limit, char **buffer)
 		}
 		break;
 	}
+	if (strchr (str, ':')) {
+		char *url = strstr (b, "url=\"");
+		if (url) {
+			b = url + 5;
+			e2 = strchr (b, '"');
+			if (e2) {
+				*e2 = 0;
+			}
+		}
+	}
 
 	*buffer = strdup(b);
 	e[0] = tmp;
+	if (e2) {
+		e2[0] = '"';
+	}
 
 	free (tag);
 }
@@ -209,6 +235,7 @@ void parse_buffer(char *url, char *txt, char *buf)
 	char *author;
 	char *category;
 	char *pubDate;
+	char *media = NULL;
 	char *content;
 	char *enclosure;
 
@@ -231,11 +258,13 @@ void parse_buffer(char *url, char *txt, char *buf)
 
 		get_tag_info(buf,"title",NULL,&title);
 		get_tag_info(buf,"author",NULL,&author);
-		if (author == NULL)
-		get_tag_info(buf,"dc:creator",NULL,&author);
+		if (author == NULL) {
+			get_tag_info(buf,"dc:creator",NULL,&author);
+		}
 		get_tag_info(buf,"link",NULL,&link);
 		get_tag_info(buf,"category",NULL,&category);
 		get_tag_info(buf,"pubDate",NULL,&pubDate);
+		get_tag_info(buf,"media:content",NULL,&media);
 		if (pubDate == NULL)
 		{
 			// <dc:date>2006-01-23T01:43:51Z</dc:date>
@@ -265,7 +294,7 @@ void parse_buffer(char *url, char *txt, char *buf)
 		{
 			do_resume( content );
 			if (!cfg.planet)
-			output_post(title,author,link,category,pubDate,content);
+			output_post(title,author,link,category,pubDate,content, media);
 		}
 
 		/* Storage it */
@@ -275,12 +304,14 @@ void parse_buffer(char *url, char *txt, char *buf)
 		storage_set("author",author);
 		storage_set("category",category);
 		storage_set("pubDate",pubDate);
+		storage_set("media",media);
 		storage_set("content",content);
 
 		free(title);
 		free(link);
 		free(author);
 		free(category);
+		free(media);
 		free(pubDate);
 		free(content);
 
