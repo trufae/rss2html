@@ -23,13 +23,51 @@
 int link_node = 0;
 
 /* TODO: This must me moved to rssshow.c or viceversa */
-void output_post(char *title, char *author, char *link, char *category, char *pubDate, char *content)
+void output_post(char *title, char *author, char *link, char *category, char *pubDate, char *content, char *media)
 {
-
+	char *sh_wrkdir = "tmp";
 	switch(cfg.o)
 	{
+	case O_SH:
+		printf ("mkdir -p %s\n", sh_wrkdir);
+		{
+			char dirname[32];
+			strncpy (dirname, sh_wrkdir, sizeof (dirname) - 1);
+			int j = strlen (dirname);
+			dirname[j++] = '/';
+			int i;
+			for (i = 0; pubDate[i]; i++) {
+				if (isalpha(pubDate[i]) || isdigit (pubDate[i])) {
+					dirname[j++] = pubDate[i];
+				}
+			}
+			dirname[j] = 0;
+			printf ("mkdir -p %s\n", dirname);
+			char *d = strdup(title);
+			char *dd = d;
+			while (true) {
+				char *s = strchr (dd, '\'');
+				if (s) {
+					*s = ' ';
+				} else {
+					char *s = strchr (dd, '\\');
+					if (s) {
+						*s = ' ';
+					} else {
+						break;
+					}
+				}
+			}
+			printf ("echo '%s' > %s/body.txt\n", d, dirname);
+			free (d);
+			printf ("[ ! -f %s/media.jpg ] && curl -o %s/media.jpg %s\n", dirname, dirname, media);
+		}
+		break;
 	case O_URL:
 		printf("%s%s\n", get_prefix_string(), link);
+		if (media) {
+			printf("=> %s\n", media);
+		}
 		break;
 	case O_TXT:
 		printf("* %s\n",title);

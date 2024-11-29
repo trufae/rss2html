@@ -21,6 +21,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #define MAXFILESIZE 512000
 
@@ -36,7 +37,9 @@ enum {
 	O_MXML,
 	O_XML2DOC,
 	O_RSS,
-	O_URL
+	O_URL,
+	O_SH,
+	O_GEM,
 };
 
 typedef struct {

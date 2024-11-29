@@ -245,6 +245,10 @@ parse_config(argc,argv)
 					cfg.o=O_TXT;
 				else if (!strcmp("mxml",argv[i]))
 					cfg.o=O_MXML;
+				else if (!strcmp("gem",argv[i]))
+					cfg.o=O_GEM;
+				else if (!strcmp("sh",argv[i]))
+					cfg.o=O_SH;
 				else if (!strcmp("html",argv[i]))
 					cfg.o=O_HTML;
 				else if (!strcmp("tml",argv[i]))
